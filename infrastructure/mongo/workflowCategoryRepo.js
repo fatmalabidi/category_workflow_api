@@ -1,17 +1,17 @@
-import Workflow from '../../entities/workflow.js'
+import WorkflowCategory from '../../entities/workflowCategory.js'
 
 export default {
     getAll: function(page, size, callback) {
-        Workflow.find(callback)
+        WorkflowCategory.find(callback)
             .limit(size * 1)
             .skip((page - 1) * size)
             .exec();
     },
     getByName: function(queryName, callback) {
-        Workflow.find({ name: queryName }, callback)
+        WorkflowCategory.find({ name: queryName }, callback)
     },
     gatByStatus: function(queryStatus, callback) {
-        Workflow.find({ status: queryStatus }, callback)
-    }
+        WorkflowCategory.find({ status: queryStatus }, callback)
+    },
 
 }
