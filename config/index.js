@@ -1,4 +1,4 @@
-// import config from "./config.yaml"
+// import config from "./config.json"
 // TODO check loading config problem
 export default {
     // will be used to connect to mongoDB (mlab) via mongoose
