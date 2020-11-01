@@ -1,8 +1,6 @@
-// import config from "./config.json"
-// TODO check loading config problem
-export default {
-    // will be used to connect to mongoDB (mlab) via mongoose
-    getWorkflowDb: function() {
-        return `mongodb://test:Test123@ds235169.mlab.com:35169/workflow`
-    },
-}
+ export default {
+     // will be used to connect to mongoDB (mlab) via mongoose
+     getWorkflowDb: function(config) {
+         return `mongodb://${config.mongo.userName}:${config.mongo.pwd}@ds235169.mlab.com:35169/workflow`
+     },
+ }
