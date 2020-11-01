@@ -2,7 +2,6 @@ import Workflow from '../entities/workflow.js';
 import WorkflowCategory from '../entities/workflowCategory.js';
 
 export default function(app) {
-    //add an endpoint and seed the db with mock data
     app.get('/api/v1/seed/workflowcategory', function(req, res) {
         var index = Math.random()
         var workflowCategories = [{

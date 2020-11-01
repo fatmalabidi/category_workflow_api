@@ -13,3 +13,6 @@ npm install
 2. Use [mlab](https://mlab.com/) to create your noSql database and get your connection string to be able to connect to it using `mongoose`. 
 Or you can use mongo compass in your local machine.   
 **NOTE:** do not forget to replace the connection string in the config file.
+
+### Test the API
+you can test this API using swagger-ui using [this link](http://127.0.0.1:3000/api-docs) (or any api client like postman)
