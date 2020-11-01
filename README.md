@@ -12,8 +12,4 @@ npm install
 
 2. Use [mlab](https://mlab.com/) to create your noSql database and get your connection string to be able to connect to it using `mongoose`. 
 Or you can use mongo compass in your local machine.   
-**NOTE:** don not forget to replace the connection string in the config file.
-
-
-**Note**: 
-
+**NOTE:** do not forget to replace the connection string in the config file.
