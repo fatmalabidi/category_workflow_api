@@ -1,28 +1,29 @@
 {
-  "name": "category_workflow_api",
-  "version": "1.0.0",
-  "description": "a simple API that deals with category/parent category workflow using mongoDB",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fatmalabidi/category_workflow_api.git"
-  },
-  "keywords": [
-    "node",
-    "mongo",
-    "express"
-  ],
-  "author": "fatma",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fatmalabidi/category_workflow_api/issues"
-  },
-  "homepage": "https://github.com/fatmalabidi/category_workflow_api#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^5.10.11"
-  }
+    "type": "module",
+    "name": "category_workflow_api",
+    "version": "1.0.0",
+    "description": "a simple API that deals with category/parent category workflow using mongoDB",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fatmalabidi/category_workflow_api.git"
+    },
+    "keywords": [
+        "node",
+        "mongo",
+        "express"
+    ],
+    "author": "fatma",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/fatmalabidi/category_workflow_api/issues"
+    },
+    "homepage": "https://github.com/fatmalabidi/category_workflow_api#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mongoose": "^5.10.11"
+    }
 }
