@@ -22,8 +22,8 @@ export default {
             return wf
         })
     },
-    gatByStatus: function(queryStatus, callback) {
-        Workflow.find({ status: queryStatus }, function(err, wf) {
+    gatByStatus: async function(queryStatus, callback) {
+        return await Workflow.find({ status: queryStatus }, function(err, wf) {
             if (err) throw err
             if (callback)
                 callback()

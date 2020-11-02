@@ -10,42 +10,48 @@ beforeEach(function() {
     mongoose.connect(config.getWorkflowTestDb());
     workflow.remove()
     var workflows = []
-
+        // seed the db with mock testdata
     for (let index = 0; index < 40; index++) {
         workflows.push({
             name: `mock-${index}`,
-            description: "desc-mock-${index}",
+            description: `desc-mock-${index}`,
             status: index % 5
         })
     }
     workflow.create(workflows)
-        // TODO clear data in db
-        // TODO seed db with mock data (at least 21 item to test pagination)
 });
 
 
-describe('Workflow', function() {
+describe('WorkflowCategory', function() {
     describe('#getByName', async function() {
         it('valid name', async function() {
-
             workflowRepo.getByName("mock-1").then(function(res) {
                 assert.notEqual(res.length, 0)
             })
         });
         it('invalid name', async function() {
             workflowRepo.getByName("invalid-name").then(function(res) {
-                // TODO change it to assert.equal after adding clean db
-                assert.equal(res.length, 0) // res is strictly greater than
+                assert.equal(res.length, 0)
+            })
+        });
+    });
+    describe('#getByStatus', async function() {
+        it('valid status', async function() {
+            workflowRepo.gatByStatus(1).then(function(res) {
+                assert.notEqual(res.length, 0) // TODO change bu greater Than ...
+            })
+        });
+        it('invalid status', async function() {
+            workflowRepo.getByName(6).then(function(res) {
+                assert.equal(res.length, 0) // no check for the status in the db layer, but the result length should be 0
             })
         });
     });
 
     describe('#getAll()', function() {
-        it('first page with 5 elements', async function() {
-            workflowRepo.getAll(1, 500).then(function(res) {
-                console.log(res)
-                console.log(res.length)
-                assert.equal(res.length, 500)
+        it('first page with 50 elements', async function() {
+            workflowRepo.getAll(1, 50).then(function(res) {
+                assert.equal(res.length, 50)
             })
         });
     });

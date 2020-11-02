@@ -1,17 +1,32 @@
 import WorkflowCategory from '../../entities/workflowCategory.js'
 
 export default {
-    getAll: function(page, size, callback) {
-        WorkflowCategory.find(callback)
+    getAll: async function(page, size, callback) {
+        return await WorkflowCategory.find(function(err, wf) {
+                if (err) throw err
+                if (callback)
+                    callback()
+                return wf
+            })
             .limit(size * 1)
             .skip((page - 1) * size)
             .exec();
     },
-    getByName: function(queryName, callback) {
-        WorkflowCategory.find({ name: queryName }, callback)
+    getByName: async function(queryName, callback) {
+        return await WorkflowCategory.find({ name: queryName }, function(err, wf) {
+            if (err) throw err
+            if (callback)
+                callback()
+            return wf
+        })
     },
-    gatByStatus: function(queryStatus, callback) {
-        WorkflowCategory.find({ status: queryStatus }, callback)
+    gatByStatus: async function(queryStatus, callback) {
+        return await WorkflowCategory.find({ status: queryStatus }, function(err, wf) {
+            if (err) throw err
+            if (callback)
+                callback()
+            return wf
+        })
     },
 
 }
