@@ -17,9 +17,7 @@ export default function(app) {
             res.send(wf);
         }
         try {
-            workflowCatRepo.getAll(page, size, fn).then(function(wf) {
-                res.send(wf)
-            })
+            workflowCatRepo.getAll(page, size, fn)
 
         } catch (error) {
             // throw error

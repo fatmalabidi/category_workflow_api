@@ -7,7 +7,7 @@ export default {
         return await Workflow.find(function(err, wf) {
                 if (err) throw err
                 if (callback)
-                    callback()
+                    callback(err, wf)
                 return wf
             })
             .limit(size * 1)
@@ -18,7 +18,7 @@ export default {
         return await Workflow.find({ name: queryName }, function(err, wf) {
             if (err) throw err
             if (callback)
-                callback()
+                callback(err, wf)
             return wf
         })
     },
@@ -26,7 +26,7 @@ export default {
         return await Workflow.find({ status: queryStatus }, function(err, wf) {
             if (err) throw err
             if (callback)
-                callback()
+                callback(err, wf)
             return wf
         })
     }

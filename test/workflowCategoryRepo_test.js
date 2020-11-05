@@ -8,7 +8,7 @@ import config from '../config/index.js'
 beforeEach(function() {
     mongoose.connect(config.getWorkflowDb());
     var workflowsCat = []
-    for (let index = 0; index <= 50; index++) {
+    for (let index = 0; index <= 10; index++) {
         workflowsCat.push({
             name: `mock-name ${index}`,
             description: `desc-mock-${index}`,
@@ -40,7 +40,7 @@ describe('Workflow', async function() {
     });
 
     describe('#getAll()', function() {
-        it('first page with 5 elements', async function() {
+        it('first page with 10 elements', async function() {
             workflowCategoryRepo.getAll(1, 10).then(function(res) {
                 assert.equal(res.length, 10)
             })

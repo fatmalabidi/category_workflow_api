@@ -10,7 +10,7 @@ before(function() {
     mongoose.connect(config.getWorkflowDb());
     var workflows = []
         // seed the db with mock testdata
-    for (let index = 0; index < 40; index++) {
+    for (let index = 0; index <= 10; index++) {
         workflows.push({
             name: `mock-${index}`,
             description: `desc-mock-${index}`,
@@ -51,9 +51,9 @@ describe('WorkflowCategory', function() {
     });
 
     describe('#getAll()', function() {
-        it('first page with 50 elements', async function() {
-            workflowRepo.getAll(1, 50).then(function(res) {
-                assert.equal(res.length, 50)
+        it('first page with 10 elements', async function() {
+            workflowRepo.getAll(1, 10).then(function(res) {
+                assert.equal(res.length, 10)
             })
         });
     });
