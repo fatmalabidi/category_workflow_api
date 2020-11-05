@@ -6,9 +6,8 @@ import config from '../config/index.js'
 
 
 
-beforeEach(function() {
-    mongoose.connect(config.getWorkflowTestDb());
-    workflow.remove()
+before(function() {
+    mongoose.connect(config.getWorkflowDb());
     var workflows = []
         // seed the db with mock testdata
     for (let index = 0; index < 40; index++) {
@@ -21,6 +20,9 @@ beforeEach(function() {
     workflow.create(workflows)
 });
 
+after(function() {
+    workflow.remove()
+})
 
 describe('WorkflowCategory', function() {
     describe('#getByName', async function() {

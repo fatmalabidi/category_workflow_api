@@ -6,10 +6,9 @@ import config from '../config/index.js'
 
 
 beforeEach(function() {
-    mongoose.connect(config.getWorkflowTestDb());
-    workflowCategory.remove()
+    mongoose.connect(config.getWorkflowDb());
     var workflowsCat = []
-    for (let index = 0; index < 40; index++) {
+    for (let index = 0; index <= 50; index++) {
         workflowsCat.push({
             name: `mock-name ${index}`,
             description: `desc-mock-${index}`,
@@ -22,7 +21,11 @@ beforeEach(function() {
     workflowCategory.create(workflowsCat)
 });
 
-describe('Workflow', function() {
+after(function() {
+    workflowCategory.remove()
+})
+
+describe('Workflow', async function() {
     describe('#getByName', async function() {
         it('valid name', async function() {
             workflowCategoryRepo.getByName("mock-1").then(function(res) {
@@ -37,10 +40,10 @@ describe('Workflow', function() {
     });
 
     describe('#getAll()', function() {
-        it('first page with 10 elements', async function() {
+        it('first page with 5 elements', async function() {
             workflowCategoryRepo.getAll(1, 10).then(function(res) {
                 assert.equal(res.length, 10)
             })
         });
-    });
+    })
 });

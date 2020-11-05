@@ -17,9 +17,12 @@ export default function(app) {
             res.send(wf);
         }
         try {
-            workflowCatRepo.getAll(page, size, fn)
+            workflowCatRepo.getAll(page, size, fn).then(function(wf) {
+                res.send(wf)
+            })
+
         } catch (error) {
-            throw error
+            // throw error
         }
     })
 
@@ -32,7 +35,9 @@ export default function(app) {
                 if (err) throw err;
                 res.send(wf);
             }
-            workflowCatRepo.getByName(req.query.name, fn)
+            workflowCatRepo.getByName(req.query.name, fn).then(function(wf) {
+                res.send(wf)
+            })
         } catch (error) {
             throw error
         }
@@ -49,7 +54,9 @@ export default function(app) {
                 if (err) throw err;
                 res.send(wf);
             }
-            workflowCatRepo.gatByStatus(req.query.status, fn)
+            workflowCatRepo.gatByStatus(req.query.status, fn).then(function(wf) {
+                res.send(wf)
+            })
         } catch (error) {
             throw error
         }
