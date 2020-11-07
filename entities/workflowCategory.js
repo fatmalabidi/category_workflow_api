@@ -11,14 +11,18 @@ var workflowCategorySchema = new Schema({
     // date epoch
     updatedAt: Number,
     status: Number,
-    // categoryID
-    // TODO one ID or list? ref to what table?
-    parentCategory: {
+    // list of categoryID 0..*
+    categories: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
-    }
+    }],
+    // list of workflowID  1..*
+    workflows: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Workflow'
+    }]
 })
 
-var WorkflowCategory = mongoose.model('WorkflowCategory', workflowCategorySchema);
+const WorkflowCategory = mongoose.model('WorkflowCategory', workflowCategorySchema);
 
 export default WorkflowCategory;

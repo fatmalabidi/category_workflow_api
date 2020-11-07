@@ -1,3 +1,4 @@
+// TODO read pwd/user from env
 export default {
     server: {
         port: 3000,

@@ -1,27 +1,17 @@
 import workflowRepo from "../infrastructure/mongo/workflowRepo.js"
-import workflow from "../entities/workflow.js"
+import setup from './test_setup.js'
 import assert from "assert"
 import mongoose from 'mongoose'
 import config from '../config/index.js'
 
 
-
 before(function() {
     mongoose.connect(config.getWorkflowDb());
-    var workflows = []
-        // seed the db with mock testdata
-    for (let index = 0; index <= 10; index++) {
-        workflows.push({
-            name: `mock-${index}`,
-            description: `desc-mock-${index}`,
-            status: index % 5
-        })
-    }
-    workflow.create(workflows)
+    setup.init()
 });
 
 after(function() {
-    workflow.remove()
+    // setup.cleanup()
 })
 
 describe('WorkflowCategory', function() {
