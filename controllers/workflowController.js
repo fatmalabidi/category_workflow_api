@@ -6,7 +6,7 @@ import helpers from "../helpers/helpers.js"
 export default function(app) {
 
     app.use(bodyParser.json())
-    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.urlencoded({ extended: true }));
 
 
     // this endpoint handles get all workflow with pagination (default 1st page with 20 elements)
@@ -57,9 +57,9 @@ export default function(app) {
     })
 
     // this endpoint handles get workflow by cattegories [ids]
-    app.get('/api/v1/workflow/categories', function(req, res) {
+    app.get('/api/v1/workflow/categories', async function(req, res) {
         try {
-            res.send(req.params.ids)
+            // res.send(req.query.ids)
             if (!req.query.ids || !helpers.IsValidIds(req.query.ids)) {
                 throw `invalid ids ${req.query.ids}`
             }
@@ -68,7 +68,8 @@ export default function(app) {
                 if (err) throw err;
                 res.send(wf);
             }
-            workflowRepo.gatByStatus(req.query.ids, fn)
+            var wfc = await workflowRepo.gatByCategories(req.query.ids, fn)
+            res.send(wfc)
         } catch (error) {
             throw error
         }

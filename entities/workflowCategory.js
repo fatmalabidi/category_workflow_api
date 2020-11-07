@@ -4,6 +4,8 @@ var Schema = mongoose.Schema;
 
 var workflowCategorySchema = new Schema({
     name: String,
+    // base64 encoded image
+    logo: String,
     description: String,
     // date epoch
     createdAt: Number,

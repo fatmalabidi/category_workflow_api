@@ -27,66 +27,6 @@ export default {
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [{
-                        "name": "page",
-                        "in": "query",
-                        "description": "the page number (default 1st)",
-
-                    },
-                    {
-                        "name": "size",
-                        "in": "query",
-                        "description": "the page size (default 20 documents)",
-                    },
-                ],
-                "responses": {
-                    "200": {
-                        "description": "workflowcategory fetshed",
-
-                    }
-                }
-            }
-        },
-        "/workflowcategory/name": {
-            "get": {
-                "tags": [
-                    "workflowcategory"
-                ],
-                "description": "gets all workflowcategory with pagination",
-
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                    "name": "name",
-                    "in": "query",
-                    "description": "category name that we want to create",
-
-                }],
-                "responses": {
-                    "200": {
-                        "description": "workflowcategory fetshed",
-
-                    }
-                }
-            }
-        },
-        "/workflowcategory/status": {
-            "get": {
-                "tags": [
-                    "workflowcategory"
-                ],
-                "description": "gets all workflow by status",
-
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                    "name": "status",
-                    "in": "query",
-                    "description": "category status that we want to create",
-
-                }],
                 "responses": {
                     "200": {
                         "description": "workflowcategory fetshed",
@@ -161,6 +101,31 @@ export default {
                 ],
                 "parameters": [{
                     "name": "status",
+                    "in": "query",
+                    "description": "category status that we want to create",
+
+                }],
+                "responses": {
+                    "200": {
+                        "description": "workflow fetshed",
+
+                    }
+                }
+            }
+        },
+
+        "/workflow/categories": {
+            "get": {
+                "tags": [
+                    "workflow"
+                ],
+                "description": "gets all workflow by categoriesIDS",
+
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
                     "in": "query",
                     "description": "category status that we want to create",
 
