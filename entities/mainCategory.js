@@ -6,6 +6,6 @@ var mainCategorySchema = new Schema({
     name: String,
 })
 
-var Category = mongoose.model('MainCategory', mainCategorySchema);
+var Category = mongoose.model('maincategories', mainCategorySchema);
 
 export default Category;

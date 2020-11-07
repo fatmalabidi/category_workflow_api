@@ -5,13 +5,13 @@ var workflowSchema = new Schema({
     name: String,
     description: String,
     status: Number,
-    // 0..*
-    workflowsCategories: [{
+    // workflowcategories  0..*
+    workflowcategories: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'WorkflowCategory'
+        ref: 'workflowcategories'
     }]
 })
 
-var Workflow = mongoose.model('Workflow', workflowSchema);
+var Workflow = mongoose.model('workflows', workflowSchema);
 
 export default Workflow;

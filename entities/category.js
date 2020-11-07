@@ -4,17 +4,18 @@ var Schema = mongoose.Schema;
 
 var categorySchema = new Schema({
     name: String,
+    // parentCategory 0..1
     parentCategory: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'MainCategory'
+        ref: 'maincategories'
     },
-    // workflowCategory 0..1
-    workflowCatorories: {
+    // workflowCatorories 0..*
+    workflowCatorories: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'WorkflowCategory'
-    }
+        ref: 'workflowcategories'
+    }]
 })
 
-var Category = mongoose.model('Category', categorySchema);
+var Category = mongoose.model('categories', categorySchema);
 
 export default Category;

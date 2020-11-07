@@ -6,7 +6,8 @@ import helpers from "../helpers/helpers.js"
 export default function(app) {
 
     app.use(bodyParser.json())
-    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.urlencoded({ extended: false }));
+
 
     // this endpoint handles get all workflow with pagination (default 1st page with 20 elements)
     app.get('/api/v1/workflow', function(req, res) {
@@ -14,7 +15,7 @@ export default function(app) {
         // fn is the callback that will be sent to the repository ti be executed after getting data
         var fn = function(err, wf) {
             if (err) throw err;
-            return wf;
+            res.send(wf);
         }
         try {
             workflowRepo.getAll(page, size, fn)
@@ -50,6 +51,24 @@ export default function(app) {
                 res.send(wf);
             }
             workflowRepo.gatByStatus(req.query.status, fn)
+        } catch (error) {
+            throw error
+        }
+    })
+
+    // this endpoint handles get workflow by cattegories [ids]
+    app.get('/api/v1/workflow/categories', function(req, res) {
+        try {
+            res.send(req.params.ids)
+            if (!req.query.ids || !helpers.IsValidIds(req.query.ids)) {
+                throw `invalid ids ${req.query.ids}`
+            }
+            // fn is the callback that will be sent to the repository ti be executed after getting data
+            var fn = function(err, wf) {
+                if (err) throw err;
+                res.send(wf);
+            }
+            workflowRepo.gatByStatus(req.query.ids, fn)
         } catch (error) {
             throw error
         }

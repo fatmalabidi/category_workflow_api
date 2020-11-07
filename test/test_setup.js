@@ -21,21 +21,21 @@ function init() {
     // setup 20 categories
     for (let index = 0; index <= 20; index++) {
         categories.push({
+            _id: mongoose.Types.ObjectId(),
             name: `cat-${index}`,
             parentCategory: mainCategories[index % 10]._id
         })
     }
     workflows.push({
-        _id: mongoose.Schema.Types.ObjectId("workflow-id"),
+        _id: mongoose.Types.ObjectId(),
         name: "workflow-name",
         description: "workflow-desc",
         status: 1,
     })
 
-    // workflowsCat has at least one workflow
-    // setup 10 mainCategory
-    for (let index = 0; index <= 100; index++) {
-        var categoriesIDs = categories.slice(index % 15, index % 15 + 5).map(item => item._id)
+    // setup 100 workflowCategories
+    for (let index = 0; index < 100; index++) {
+        var categoriesIDs = categories.slice(0, 1).map(item => item._id)
         workflowsCat.push({
             name: `workflow-cat-name-${index}`,
             description: `workflow-cat-desc-${index}`,
@@ -47,12 +47,14 @@ function init() {
         })
     }
 
-    // setup 20 categories
-    for (let index = 0; index <= 20; index++) {
+    // setup 100 workflows
+    for (let index = 0; index < 100; index++) {
+        var workflowsIDs = workflowsCat.slice(0, 1).map(item => item._id)
         workflows.push({
             name: `workflow-desc-${index}`,
             description: `workflow-desc-${index}`,
             status: 1,
+            workflowsCategories: workflowsIDs
         })
     }
     var callback = function(err, result) {

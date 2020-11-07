@@ -11,6 +11,7 @@ export default {
                     callback(err, wf)
                 return wf
             })
+            .populate({ path: "workflowcategories" })
             .limit(size * 1)
             .skip((page - 1) * size)
             .exec();

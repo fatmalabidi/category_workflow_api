@@ -1,23 +1,10 @@
 import workflowRepo from "../infrastructure/mongo/workflowRepo.js"
-import setup from './test_setup.js'
 import assert from "assert"
-import mongoose from 'mongoose'
-import config from '../config/index.js'
-
-
-before(function() {
-    mongoose.connect(config.getWorkflowDb());
-    setup.init()
-});
-
-after(function() {
-    // setup.cleanup()
-})
 
 describe('WorkflowCategory', function() {
     describe('#getByName', async function() {
         it('valid name', async function() {
-            workflowRepo.getByName("mock-1").then(function(res) {
+            workflowRepo.getByName("workflow-name").then(function(res) {
                 assert.notEqual(res.length, 0)
             })
         });

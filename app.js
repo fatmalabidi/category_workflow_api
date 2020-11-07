@@ -17,7 +17,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 mongoose.connect(confReader.getWorkflowDb(config));
 
-seed(app);
 workflowcategoryController(app);
 workflowController(app);
 

@@ -3,7 +3,6 @@ import mongoose from "mongoose"
 var Schema = mongoose.Schema;
 
 var workflowCategorySchema = new Schema({
-
     name: String,
     description: String,
     // date epoch
@@ -11,18 +10,18 @@ var workflowCategorySchema = new Schema({
     // date epoch
     updatedAt: Number,
     status: Number,
-    // list of categoryID 0..*
+    // list of category 0..*
     categories: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category'
+        ref: 'categories'
     }],
-    // list of workflowID  1..*
+    // list of workflow  1..*
     workflows: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Workflow'
+        ref: 'workflows'
     }]
 })
 
-const WorkflowCategory = mongoose.model('WorkflowCategory', workflowCategorySchema);
+const WorkflowCategory = mongoose.model('workflowcategories', workflowCategorySchema);
 
 export default WorkflowCategory;

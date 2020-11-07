@@ -8,6 +8,8 @@ export default {
                 if (callback)
                     callback(err, wf)
                 return wf
+            }).populate({
+                path: "workflows",
             })
             .exec();
     },
