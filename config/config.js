@@ -5,7 +5,7 @@ export default {
         host: "127.0.0.01"
     },
     mongo: {
-        userName: "test",
-        pwd: "Test123"
+        userName: "<user>",
+        pwd: "<password>"
     }
 }

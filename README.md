@@ -4,6 +4,8 @@ a simple API that deals with category/parent category workflow using mongoDB
 ### Requirements
 * Node Package Manager: [npm](https://www.npmjs.com/get-npm)
 * [NodeJS](https://nodejs.org/en/download/)
+**NOTE:**
+Do ot forget to setup the connection string for both databases for `test` and `prod` in the `config.js` file
 ### Setup the envirement
 1.  Install our dependencies  
 ```shell

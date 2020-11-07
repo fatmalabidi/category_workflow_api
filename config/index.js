@@ -1,5 +1,5 @@
 import config from './config.js'
-// TODO read pwd/user from env orvget it from running args
+// TODO read pwd/user from env or get it from running args
 export default {
     // will be used to connect to mongoDB (mlab) via mongoose
     getWorkflowDb: function() {
