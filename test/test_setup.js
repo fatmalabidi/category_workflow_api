@@ -4,10 +4,10 @@ import Workflow from '../entities/workflow.js';
 import WorkflowCategory from '../entities/workflowCategory.js';
 import mongoose from 'mongoose';
 
+var categories = []
 
 // init will add mock data to database for the test
 function init() {
-    var categories = []
     var mainCategories = []
     var workflows = []
     var workflowsCat = []
@@ -76,6 +76,7 @@ function cleanup() {
 }
 
 export default {
+    insertedCategories: categories.map(cat => cat._id),
     init: init,
     cleanup: cleanup
 }

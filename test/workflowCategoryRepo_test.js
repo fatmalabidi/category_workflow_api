@@ -23,4 +23,12 @@ describe('WorkflowCategory', async function() {
             })
         });
     });
+    describe('#getByCategories', async function() {
+        it('valid request', async function() {
+            workflowCategoryRepo.
+            getByCategories(setup.insertedCategories).then(function(res) {
+                assert.notEqual(res.length, 0)
+            })
+        });
+    });
 });

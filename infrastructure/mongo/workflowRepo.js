@@ -1,4 +1,6 @@
+import mongoose from "mongoose"
 import Workflow from '../../entities/workflow.js'
+import WorkflowCategory from '../../infrastructure/mongo/workflowCategoryRepo.js'
 
 export default {
 
@@ -40,8 +42,9 @@ export default {
 
     // gatByCategories gets list of [Workflow] based on the list of [categories] ID
     gatByCategories: async function(categories, callback) {
-        var obj_ids = categories.map(function(id) { return ObjectId(id); });
-        return await Workflow.find({ workflowcategories: { $in: obj_ids } }, function(err, wf) {
+        // TODO enhance with nested join
+        var wfc = await WorkflowCategory.getByCategories(categories)
+        return await Workflow.find({ workflowcategories: { $in: wfc.categories } }, function(err, wf) {
             if (err) throw err
             if (callback)
                 callback(err, wf)
